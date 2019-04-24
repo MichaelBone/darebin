@@ -26,10 +26,12 @@ agent.user_agent_alias = 'Mac Safari'
 # https://stackoverflow.com/questions/33572956/ruby-ssl-connect-syscall-returned-5-errno-0-state-unknown-state-opensslssl
 # This allows it to work with Mechanize. You'll see a warning because we're
 # redefining a constant.
-params = OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
-params[:ssl_version] = :TLSv1
-params[:ciphers] = ['DES-CBC3-SHA']
-OpenSSL::SSL::SSLContext::DEFAULT_PARAMS = params
+# Subsequently commented this out after it started failing (possibly due to
+# a recent update to the MITM proxy).
+# params = OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
+# params[:ssl_version] = :TLSv1
+# params[:ciphers] = ['DES-CBC3-SHA']
+# OpenSSL::SSL::SSLContext::DEFAULT_PARAMS = params
 
 # select Planning Application
 page = agent.get url
